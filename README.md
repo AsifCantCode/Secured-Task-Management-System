@@ -4,3 +4,8 @@ To Enhance security, please change the secret key for JWT to your desired number
 For Admin entry, you can directly input a data in your MONGODB compass and select the user as admin and for users, you can use the login feature.
 Requires the following installations: Express, mongoose, body-parser, bcrypt, cors, jsonwebtoken, nodemon after initializing using "npm init -y".
 Go to the server folder and run by writing "npm start" and open localhost on your browser.
+
+Technologies used:
+
+Frontend: HTML, CSS
+Backend: MongoDB
