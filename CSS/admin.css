@@ -1,0 +1,94 @@
+/* admin.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card {
+    width: 100%;
+    max-width: 600px; /* Adjust the max-width as needed */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #007bff; /* Bootstrap primary color */
+}
+
+.user-info {
+    background-color: #dbdbdb;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.user-info p {
+    margin: 0;
+}
+
+.user-info strong {
+    color: #2ba4a9;
+}
+
+.logOut-btn {
+    margin-left: 70%;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #dc3545; /* Red color, you can change this to your desired color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.logOut-btn:hover {
+    background-color: #bd2130; /* Darker red color on hover, adjust as needed */
+}
+
+.admin-message {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admin-message p {
+    color: #28a745; /* Bootstrap success color */
+    font-weight: bold;
+}
+
+/* Style the table */
+#userTable {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+#userTable th, #userTable td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+}
+
+#userTable th {
+    background-color: #007bff;
+    color: #fff;
+}

@@ -1,0 +1,251 @@
+body {
+    background-color: #cdcecf; /* Ambient color */
+}
+
+.container {
+    background-color: #ffffff; /* Container background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for container */
+}
+
+h1 {
+    color: #efefef;
+    background-color: #2ba4a9;
+    padding: 20px; /* Heading color */
+    border-radius: 20px;
+    border:1px solid black;
+}
+.user-info {
+    background-color: #dbdbdb;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.user-info p {
+    margin: 0;
+}
+
+.user-info strong {
+    color: #2ba4a9;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form {
+    margin-top: 20px;
+}
+#taskList {
+    display: flex;
+    flex-wrap: wrap;
+}
+.task-tile.completed {
+    background-color: #aafca6; /* Change this color as needed */
+}
+
+
+.task-tile {
+    flex: 0 0 calc(30% - 20px); /* Adjust the width as needed */
+    border: 1px solid #d1d1d1;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 20px;
+    background-color: #bb93ec;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+}
+
+.task-tile:hover {
+    transform: scale(1.05); /* Add a slight scale effect on hover */
+}
+
+
+.task-description {
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 15px;
+}
+
+.task-meta {
+    font-size: 12px;
+    color: #999999;
+}
+
+.task-completed {
+    font-weight: bold;
+    color: #28a745;
+}
+p{
+    margin: 20px;
+    font-weight: bold;
+}
+p::first-letter{
+    text-transform:uppercase;
+}
+
+.task-tile button {
+    background-color: #f0e68c;
+    color: black;
+    border: 1px solid #8c8e85;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);/* Add a smooth transition effect */
+}
+
+.task-tile button:hover {
+    background-color: #c82333;
+    color: white; /* Darker red on hover */
+}
+.task-tile h2{
+    color: black;
+    background-color: #8cd1d1;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 0px;    
+    text-align: center;
+}
+.task-tile.completed h2{
+    color: white;
+    background-color: #28a745;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 0px;    
+    text-align: center;
+}
+h2::first-letter{
+    text-transform: uppercase;
+}
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #60c2c4;
+    padding-left: 80px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.filter-container:hover {
+    background-color: #45cccf; /* Ambient color change on hover */
+}
+
+.filter-dropdown {
+    flex: 1;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.filter-dropdown:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.select-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.select-group select:hover {
+    border-color: #007bff; /* Border color change on hover */
+}
+
+.select-group::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.select-group:hover::after {
+    color: #007bff; /* Arrow color change on hover */
+}
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff; /* Background color of the sticky header */
+    z-index: 1; /* Set a high z-index to make sure it's above other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for separation */
+}
+.task-form-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.task-form-container:hover {
+    background-color: #e9ecef; /* Ambient color change on hover */
+}
+
+.task-form {
+    max-width: 500px; /* Adjust the max-width as needed */
+    margin: 0 auto;
+}
+.filter-checkbox {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    
+}
+.filter-checkbox input {
+    margin-right: 5px;
+    cursor: pointer;
+    width: 24px; /* Adjust the width as needed */
+    height: 24px; /* Adjust the height as needed */
+    border: 2px solid #007bff; /* Border color of the checkbox */
+}
+
+
+.filter-checkbox label {
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 20px;
+    user-select: none;
+}
+.logOut-btn {
+    margin-left: 70%;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #dc3545; /* Red color, you can change this to your desired color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.logOut-btn:hover {
+    background-color: #bd2130; /* Darker red color on hover, adjust as needed */
+}

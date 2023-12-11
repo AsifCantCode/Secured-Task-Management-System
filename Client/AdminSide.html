@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../CSS/admin.css"> <!-- Add your custom styles here -->
+    <title>Admin Panel</title>
+</head>
+
+<body class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="text-center mb-4">Admin Panel</h1>
+
+            <div class="user-info">
+                <p><strong>Username:</strong> <b><span id="username"></span></b></p>
+                <strong>Email:</strong> <b><span id="email"></span></b><button id="logoutButton" class="logOut-btn" onclick="logout()">Logout</button>
+            </div>
+
+            <div class="admin-message">
+                <p>Logged in as admin</p>
+            </div>
+
+            <div id="userTableContainer" class="mt-4"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../JS/admin.js"></script>
+</body>
+
+</html>
