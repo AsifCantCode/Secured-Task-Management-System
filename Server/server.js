@@ -1,4 +1,8 @@
 const PORT = 3000
+
+require('dotenv').config();
+
+const nodemailer = require('nodemailer');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -6,6 +10,14 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
+const transporter = nodemailer.createTransport({
+    service: process.env.EMAIL_SERVICE,
+    auth: {
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD,
+    },
+});
 
 const app = express();
 mongoose.connect('mongodb://localhost/securedtms', {
@@ -70,6 +82,21 @@ app.post('/new', async (req, res) => {
         await userInfo.save();
         console.log('User saved:', userInfo);
 
+        const mailOptions = {
+            from: process.env.EMAIL_USERNAME,
+            to: email,
+            subject: 'Registration Successful',
+            text: 'Thank you for registering with our application!',
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error sending email:', error);
+            } else {
+                console.log('Email sent:', info.response);
+            }
+        });
+        
         res.status(201).json(userInfo);
     } catch (error) {
         console.error('Error saving user:', error);
