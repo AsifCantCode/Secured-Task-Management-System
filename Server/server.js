@@ -22,8 +22,8 @@ const transporter = nodemailer.createTransport({
 const app = express();
 mongoose.connect('mongodb://localhost/securedtms', {
 })
-.then(() => console.log('Connected to the database'))
-.catch(err => console.error('Error connecting to the database:', err));
+    .then(() => console.log('Connected to the database'))
+    .catch(err => console.error('Error connecting to the database:', err));
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
 
@@ -51,13 +51,13 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-app.use('/JS', express.static(path.join(__dirname, '..', 'JS'), {'Content-type': 'application/javascript'}));
+app.use('/JS', express.static(path.join(__dirname, '..', 'JS'), { 'Content-type': 'application/javascript' }));
 app.use(express.static(path.join(__dirname, '..', 'Client')));
 app.use('/CSS', express.static(path.join(__dirname, '../CSS')));
 
 // Define your API endpoints here
 
-app.get('/', (req, res) =>{
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'Client', 'Login.html'));
 })
 
@@ -96,7 +96,7 @@ app.post('/new', async (req, res) => {
                 console.log('Email sent:', info.response);
             }
         });
-        
+
         res.status(201).json(userInfo);
     } catch (error) {
         console.error('Error saving user:', error);
@@ -154,7 +154,7 @@ app.get('/api/users', async (req, res) => {
 
 app.delete('/api/users/:username', async (req, res) => {
     const usernameToDelete = req.params.username;
-    
+
     try {
         const deletedUser = await User.findOneAndDelete({ username: usernameToDelete });
 
@@ -168,13 +168,34 @@ app.delete('/api/users/:username', async (req, res) => {
     }
 });
 
+app.put('/api/update/:id', async (req, res) => {
+    const taskId = req.params.id;
+    const { description } = req.body;
+
+    try {
+        // Update the task in the database
+        const updatedTask = await Task.findByIdAndUpdate(
+            taskId,
+            { description },
+            { new: true }
+        );
+        if (!updatedTask) {
+            return res.status(404).json({ message: 'Task not found' });
+        }
+        res.json({ message: 'Task updated successfully', updatedTask });
+    } catch (error) {
+        console.error('Error updating task:', error);
+        res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    }
+});
+
 app.post('/login', async (req, res) => {
     const { role, username, pass } = req.body;
     console.log(req.body)
 
     try {
         console.log(username)
-        const existingUser = await User.findOne({username: username, role: role });
+        const existingUser = await User.findOne({ username: username, role: role });
         console.log(existingUser);
 
         if (!existingUser || !(await bcrypt.compare(pass, existingUser.pass))) {
@@ -270,12 +291,12 @@ app.delete('/api/tasks/:taskId', async (req, res) => {
     try {
         const { taskId } = req.params;
         const deletedTask = await Task.findByIdAndDelete(taskId);
-    
-    if (!deletedTask) {
-        return res.status(404).json({ message: 'Task not found' });
-    }
 
-    res.json({ message: 'Task deleted successfully', deletedTask });
+        if (!deletedTask) {
+            return res.status(404).json({ message: 'Task not found' });
+        }
+
+        res.json({ message: 'Task deleted successfully', deletedTask });
     } catch (error) {
         res.status(500).send(error.message);
     }
@@ -299,6 +320,6 @@ app.put('/api/tasks/:taskId/complete', async (req, res) => {
     }
 });
 
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log('Server is listening!')
 })

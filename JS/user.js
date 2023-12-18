@@ -147,6 +147,7 @@ function createTaskElement(task) {
         <p>Completed  : ${task.completed ? 'Yes' : 'No'}</p>
         <button class="delete-button" data-task-id="${task._id}">Delete Task</button>
         <button class="complete-button" data-task-id="${task._id}">Complete Task</button>
+        <button class="update-button" data-task-id="${task._id}">Update Task</button>
     `;
 
     if (task.completed) {
@@ -166,6 +167,10 @@ function handleTaskListClick(event) {
     } else if (target.classList.contains('complete-button')) {
         const taskId = target.dataset.taskId;
         completeTask(taskId);
+    } else if (target.classList.contains('update-button')) {
+        const taskId = target.dataset.taskId;
+        const description = prompt('Enter new description:');
+        updateTask(taskId, description);
     }
 }
 
@@ -179,6 +184,32 @@ function deleteTask(taskId) {
             fetchTasks();
         })
         .catch(error => console.error('Error deleting task:', error));
+}
+
+function updateTask(taskId, description) {
+    console.log('Updating task:', taskId, 'with description:', description);
+
+    fetch(`/api/update/${taskId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ description: description }),
+    })
+    .then(response => {
+        console.log('Response status:', response.status);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(result => {
+        console.log('Update result:', result.message);
+        fetchTasks();
+    })
+    .catch(error => {
+        console.error('Error updating task:', error.message);
+    });
 }
 
 function completeTask(taskId) {

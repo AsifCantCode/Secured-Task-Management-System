@@ -249,3 +249,13 @@ label {
 .logOut-btn:hover {
     background-color: #bd2130; /* Darker red color on hover, adjust as needed */
 }
+
+#delete-btn {
+    margin: 5px;
+}
+#complete-btn {
+    margin: 5px;
+}
+#update-btn {
+    margin: 5px;
+}
