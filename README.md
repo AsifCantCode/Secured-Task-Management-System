@@ -1,5 +1,5 @@
 This is a JSON Web Token and Bcrypt implemented secured Task Management System with admin and user side functionalities.
-Recent push also takes care of an Email verified Registration with a confirmation mail.
+Recent push also takes care of an Email verified Registration with a confirmation mail. Update the dotenv file with your credentials.
 
 
 To Enhance security, please change the secret key for JWT to your desired key rather than the provided '200041106' which is my student ID.
